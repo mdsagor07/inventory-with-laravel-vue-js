@@ -1,2 +1,2 @@
 # inventory
- inventoryshop manage
+ inventory
