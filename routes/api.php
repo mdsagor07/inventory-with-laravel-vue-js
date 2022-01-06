@@ -1,6 +1,7 @@
 <?php
 //laravel 8 update 
 use app\Http\Controllers\AuthController;
+use app\Http\Controllers\Api\EmployeeController;
 
 Route::group([
 
@@ -17,3 +18,5 @@ Route::group([
     Route::post('me', 'App\Http\Controllers\AuthController@me');
 
 });
+
+Route::apiResource('/employee',App\Http\Controllers\Api\EmployeeController::class);

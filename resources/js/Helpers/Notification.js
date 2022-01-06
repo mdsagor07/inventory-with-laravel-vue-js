@@ -42,6 +42,16 @@ class Notification{
            
         }).show();
     }
+    image_validate(){
+
+        new Noty({
+           type:"warning",
+           layout:"topRight",
+           text: 'please upload image less than 1 MB ',
+           timeout:1000,
+           
+        }).show();
+    }
   
 
 
