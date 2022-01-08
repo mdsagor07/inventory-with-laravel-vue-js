@@ -211,6 +211,10 @@ export default {
              Notification.success()
          })
          .catch(error => this.errors=error.reponsece.data.errors)
+         .catch(error => {
+         console.log("ERRRR:: ",error.response.data);
+     
+     });
 
      },
      

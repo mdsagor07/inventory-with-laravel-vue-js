@@ -3,7 +3,7 @@
   <div>
 
  <div class="row">
-  <router-link to="/store-supplier" class="btn btn-primary" style="height:35px; width:200px;">Add Supplier </router-link>
+  <router-link to="/store-supplier" class="btn btn-primary ml-3" style="height:35px; width:200px;">Add Supplier </router-link>
    
  </div>
 <br>

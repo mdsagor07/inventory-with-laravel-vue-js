@@ -176,6 +176,11 @@
         Notification.success()
        })
        .catch(error =>this.errors = error.response.data.errors)
+
+     .catch(error => {
+     console.log("ERRRR:: ",error.response.data);
+     
+     });
      },
   } 
   }
