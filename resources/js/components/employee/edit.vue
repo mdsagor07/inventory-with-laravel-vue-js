@@ -209,13 +209,14 @@ export default {
 
  },
  
+ 
  methods:{
 
      OnFileSelected(event){
 
     let file = event.target.files[0];
      if (file.size > 1048770) {
-         
+
       Notification.image_validate()
      }else{
       let reader = new FileReader();

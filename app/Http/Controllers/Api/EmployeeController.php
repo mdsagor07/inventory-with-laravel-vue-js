@@ -153,7 +153,7 @@ class EmployeeController extends Controller
                 $image_path=$img->photo;
                 $done=unlink($image_path);
                 $data->save();
-                // Employee::where('id',$id)->update();
+                
 
             }
         }
@@ -162,7 +162,7 @@ class EmployeeController extends Controller
             $oldphoto=$request->photo;
             $data['photo']=$oldphoto;
             $data->save();
-            
+
         }
 
     }
