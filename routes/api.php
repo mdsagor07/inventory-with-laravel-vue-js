@@ -22,3 +22,5 @@ Route::group([
 Route::apiResource('/employee',App\Http\Controllers\Api\EmployeeController::class);
 Route::apiResource('/supplier',App\Http\Controllers\Api\SupplierController::class);
 Route::apiResource('/category',App\Http\Controllers\Api\CategoryController::class);
+Route::apiResource('/product',App\Http\Controllers\Api\ProductController::class);
+
