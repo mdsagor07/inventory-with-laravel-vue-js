@@ -23,4 +23,6 @@ Route::apiResource('/employee',App\Http\Controllers\Api\EmployeeController::clas
 Route::apiResource('/supplier',App\Http\Controllers\Api\SupplierController::class);
 Route::apiResource('/category',App\Http\Controllers\Api\CategoryController::class);
 Route::apiResource('/product',App\Http\Controllers\Api\ProductController::class);
+Route::apiResource('/expense',App\Http\Controllers\Api\ExpenseController::class);
+
 
