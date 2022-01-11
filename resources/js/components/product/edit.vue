@@ -180,7 +180,7 @@
   export default {
     created(){
       if (!User.loggedIn()) {
-        this.$router.push({name: '/'})
+        this.$router.push({name: '/'}) 
       }
     },
     data(){
@@ -217,6 +217,12 @@
     .then(({data}) => (this.suppliers = data)) 
   },
   methods:{
+    GetOldImage(){
+      
+
+
+    },
+
     onFileSelected(event){
      let file = event.target.files[0];
      if (file.size > 1048770) {
@@ -239,6 +245,7 @@
        })
        .catch(error =>this.errors = error.response.data.errors)
      },
+
   } 
   }
    

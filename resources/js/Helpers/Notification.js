@@ -11,6 +11,17 @@ class Notification{
         }).show();
     }
 
+    alreadypaid(){
+
+        new Noty({
+           type:"alert",
+           layout:"topRight",
+           text: 'already paid',
+           timeout:1000,
+           
+        }).show();
+    }
+
     alert(){
 
         new Noty({

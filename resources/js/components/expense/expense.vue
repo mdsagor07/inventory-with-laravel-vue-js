@@ -3,11 +3,11 @@
   <div>
 
  <div class="row">
-  <router-link to="/store-expense" class="btn btn-primary">Add Expense </router-link>
+  <router-link to="/store-expense" class="btn btn-primary ml-3" style="height:35px; width:200px;">Add Expense </router-link>
    
  </div>
 <br>
-   <input type="text" v-model="searchTerm" class="form-control" style="width: 300px;" placeholder="Search Here">
+   <input type="text" v-model="searchTerm" class="form-control" style="width: 100%;" placeholder="Search Here">
 
 
 <br>

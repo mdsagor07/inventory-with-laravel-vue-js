@@ -19,6 +19,9 @@ class ProductController extends Controller
     public function index()
     {
         
+        // $products= Product::with('category')->get();
+        // return response()->json($products);
+
         $product = DB::table('products')
                     ->join('categories','products.category_id','categories.id')
                     ->join('suppliers','products.supplier_id' ,'suppliers.id')
@@ -115,6 +118,7 @@ class ProductController extends Controller
          return response()->json($product);
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -189,6 +193,8 @@ class ProductController extends Controller
         }else
         {
             Product::where('id',$id)->delete();
+            
+
         }
     }
 }

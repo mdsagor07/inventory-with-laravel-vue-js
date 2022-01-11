@@ -26,3 +26,17 @@ Route::apiResource('/product',App\Http\Controllers\Api\ProductController::class)
 Route::apiResource('/expense',App\Http\Controllers\Api\ExpenseController::class);
 
 
+Route::Post('/salary/paid/{id}',[App\Http\Controllers\Api\SalaryController::class, 'Paid']);
+
+Route::Get('/salary', [App\Http\Controllers\Api\SalaryController::class, 'AllSalary']);
+
+Route::Get('/salary/view/{id}', [App\Http\Controllers\Api\SalaryController::class, 'ViewSalary']);
+Route::Get('/edit/salary/{id}', [App\Http\Controllers\Api\SalaryController::class, 'EditSalary']);
+Route::Post('/salary/update/{id}', [App\Http\Controllers\Api\SalaryController::class, 'SalaryUpdate']);
+
+
+
+
+
+
+

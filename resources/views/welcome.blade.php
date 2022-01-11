@@ -138,6 +138,23 @@
           </div>
         </div>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap15"
+          aria-expanded="true" aria-controls="collapseBootstrap15">
+          <i class="far fa-fw fa-window-maximize"></i>
+          <span>Salary</span>
+        </a>
+        <div id="collapseBootstrap15" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+
+            <router-link class="collapse-item" to="/given-salary">Add Salary</router-link>
+           
+            <router-link class="collapse-item" to="/salary">All Salary</router-link>
+            
+          </div>
+        </div>
+      </li>
 {{--   nav end --}}
 
       <li class="nav-item">
@@ -437,14 +454,15 @@
   <script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
   <script src="{{ asset('backend/js/ruang-admin.min.js') }}"></script>
   <script src="{{ asset('backend/vendor/chart.js/Chart.min.js') }}"></script>
-  <script src="{{ asset('backend/js/demo/chart-area-demo.js') }}"></script>  
+  
+  {{-- <script src="{{ asset('backend/js/demo/chart-area-demo.js') }}"></script>   --}}
 
   <script>
-    let token=  localStorage.getItem(token)
-    if(token){
-      $("#TopBar").css("display","")
-      $("#Sidebar").css("display","")
-    }
+    // let token=  localStorage.getItem(token);
+    // if(token){
+    //   $("#TopBar").css("display","")
+    //   $("#Sidebar").css("display","")
+    // }
 
   </script>
 </body>
