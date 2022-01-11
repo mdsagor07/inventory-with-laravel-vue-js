@@ -3,7 +3,7 @@
   <div>
 
  <div class="row">
-  <router-link to="/product" class="btn btn-primary">All Product </router-link>
+  <router-link to="/product" class="btn btn-primary ml-3" style="height:35px; width:200px;">All Product </router-link>
    
  </div>
 
@@ -218,7 +218,7 @@
   },
   methods:{
     GetOldImage(){
-      
+
 
 
     },
