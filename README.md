@@ -1,7 +1,7 @@
 # inventory
  inventory
 <<<<<<< HEAD
-CLS Computer
+My blog
 Please Visit the Blog @ https://sagorcseblog.blogspot.com/
 
 
