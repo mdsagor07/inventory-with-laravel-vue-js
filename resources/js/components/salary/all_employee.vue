@@ -75,7 +75,6 @@
       return{
         employees:[],
         searchTerm:''
-
       }
     },
     computed:{

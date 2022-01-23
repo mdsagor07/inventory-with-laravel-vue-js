@@ -131,11 +131,11 @@
          <div class="form-group">
 
           <div class="form-row">
-            <div class="col-md-6">
-   <input type="file" class="custom-file-input" id="customFile" @change="onFileSelected">
+            <div class="col-md-5 ml-1">
+   <input type="file" class="custom-file-input " id="customFile" @change="onFileSelected">
 
-  <small class="text-danger" v-if="errors.image"> {{ errors.image[0] }} </small>
-       <label class="custom-file-label" for="customFile">Choose file</label>
+  <small class="text-danger " v-if="errors.image"> {{ errors.image[0] }} </small>
+       <label class="custom-file-label" for="customFile">Choose file</label> 
             </div>
 
 

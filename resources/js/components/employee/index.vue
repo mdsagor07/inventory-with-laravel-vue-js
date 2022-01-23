@@ -7,7 +7,7 @@
 
     <div>
         <div class="row">
-           <router-link class="btn btn-primary ml-3" style="height:35px; width:200px;" to="/store-employee">Add Employee</router-link>
+           <router-link class="btn btn-primary ml-3 mb-2" style="height:35px; width:200px;" to="/store-employee">Add Employee</router-link>
 
         </div>
     </div>
@@ -16,7 +16,7 @@
     <div class="row justify-content-center">
       <div class="col-xl-12 col-lg-12 col-md-12">
          <div>
-             <input type="text" v-model="searchTerm" class="form-control mt-4 mb-2  ml-.8" style="width: 100%;" placeholder="Search Here">
+             <!-- <input type="text" v-model="searchTerm" class="form-control mt-4 mb-2  ml-.8" style="width: 100%;" placeholder="Search Here"> -->
                </div>
         <div >
           <div >
@@ -30,29 +30,22 @@
                   <h6 class="m-0 font-weight-bold text-primary">Employee List</h6>
                 </div>
                 <div class="table-responsive">
-                  <table class="table align-items-center table-flush">
+                  <table id="myTable" class="table align-items-center table-flush">
                     <thead class="thead-light">
                       <tr >
                         <th>Name</th>
                         <th>Photo</th>
+                        <th>Email</th>
                         <th>Phone</th>
-                        <th>Salary</th>
+                        <th>Salary(Taka)</th>
                         <th>Joining_Date</th>
+                        
                         <th>Action</th>
+                        
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="employee in filteredsearch" :key="employee.id">
-                        <td>{{ employee.name }}</td>
-                        <td><img :src="employee.photo" alt="photo" id="em_photo"></td>
-                        <td>{{ employee.phone }}</td>
-                        <td>${{ employee.salary }}</td>
-                        <td>{{ employee.joining_date }}</td>
-                        <td>
-                          <router-link :to="{name:'edit-employee', params:{id:employee.id}}" class="btn btn-sm btn-primary">Edit</router-link>
-                          <a @click="DeleteEmployee(employee.id)" class="btn btn-sm btn-danger">Delete</a>
-                          </td>
-                      </tr>
+                    
                       
                     </tbody>
                   </table>
@@ -69,39 +62,33 @@
 </div>
 </template>
 <script>
+import jQuery from'jquery'
+import $ from'jquery'
+
+import  'datatables.net/js/jquery.dataTables.min.js'
+import 'datatables.net-dt/js/dataTables.dataTables.min.js'
+import Vue from 'vue'
 export default {
 
+ 
 
+    
   created(){
     if(!User.loggedIn())
     this.$router.push({name:'/'})
-
   },
+
   
   data(){
+
       return{
           employees:[],
           searchTerm:'',
-
       }
   },
   
   
-  computed:{
-    filteredsearch(){
-
-      if(this.searchTerm){
-                return this.employees.filter((employee)=>{
-                    return employee.phone.match(this.searchTerm)
-            })
-        }
-        
-        else{
-            return this.employees;
-        }
-    }
-
-  },
+  
   methods:{ 
       allEmployee(){
           axios.get('/api/employee/')
@@ -109,6 +96,7 @@ export default {
           .catch()
       },
       DeleteEmployee(id){
+        alert(id);
             Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -119,12 +107,9 @@ export default {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-
               axios.delete('/api/employee/'+id)
               .then(()=> {
-
                 this.employees=this.employees.filter( employee =>{
-
                   return employee.id !=id
                 })
               })
@@ -140,20 +125,64 @@ export default {
           })
         
       }
-
   },
   created(){
-      this.allEmployee();
+      //this.allEmployee();
+      
+      $(document).ready( function () {
+
+        
+           // $.noConflict();
+            $('#myTable').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": "api/employee",
+                buttons: [
+              'copy', 'excel', 'pdf'
+                 ],
+                "columns": [
+              
+                {data: 'name', name: 'name'},   
+                 { data: 'photo', name: 'photo',
+                    render: function( data, type, full, meta ) {
+                        return "<img src=\"" + data + "\" height=\"45\"/>";
+                    }
+                },   
+                {data: 'email', name: 'email'},
+                {data: 'phone', name: 'phone'},
+                {data: 'salary', name: 'salary'},
+                {data: 'joining_date', name: 'joining_date'},
+               
+                  {
+              data: 'id',name: 'action',
+              render: function(data){
+                let btn;
+                
+                         btn='<router-link :to="{name: edit-employee, params:{id:'+data+'}}" class="btn btn-sm btn-primary">Edit</router-link>';
+                         btn= btn+ '<button  id="deletebtn"  onclick="DeleteEmployee('+data+')" class="edit btn btn-danger btn-sm m-2">Delete</button>';
+                        
+                        return btn;
+                        
+                        
+             },
+             
+          },
+
+          
+
+                    
+                ]
+            });
+
+
+            
+   });
+
   }
-
  
-
-}
+  }
+  
 </script>
 <style scoped>
-#em_photo{
-  height: 40px;
-  width: 40px;
-}
 
 </style>

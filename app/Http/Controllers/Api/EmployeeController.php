@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use Yajra\Datatables\Datatables;
 use Image;
 
 class EmployeeController extends Controller
@@ -14,10 +15,24 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request )
     {
-        $employee=Employee::all();
-        return response()->json($employee);
+         $employee=Employee::all(); 
+        // return response()->json($employee);
+         return datatables()->of(Employee::all())->toJson();
+        // return Datatables::of($employee)
+        //             ->addIndexColumn()
+        //             ->addColumn('action', function($employee){
+
+
+        //                    $btn = '<router-link  id="editbtn" data-id="'.$employee->id.'  " class="edit btn btn-info btn-sm m-2">Edit</router-link>';
+                           
+        //                    $btn = $btn.'<a  onclick="DeleteEmployee('.$employee->id.')"  class="delete btn btn-danger btn-sm m-2">Delete</a>';
+         
+        //                     return $btn;
+        //             })
+        //             ->rawColumns(['action'])
+        //             ->make(true);
     }
 
     /**

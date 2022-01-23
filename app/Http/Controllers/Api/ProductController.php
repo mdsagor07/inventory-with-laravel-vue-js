@@ -62,6 +62,7 @@ class ProductController extends Controller
             'selling_price' => 'required',
             'buying_date' => 'required',
             'product_quantity' => 'required',
+             
    
            ]);
    
@@ -196,5 +197,14 @@ class ProductController extends Controller
             
 
         }
+    }
+
+    public function StockUpdate(Request $request,$id){
+        $product = Product::find($id);
+        $product->product_quantity=$request->product_quantity;
+        
+        $product->update();
+
+
     }
 }

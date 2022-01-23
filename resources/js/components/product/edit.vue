@@ -70,6 +70,7 @@
        
 
 
+
  <div class="form-group">
 
           <div class="form-row">
@@ -139,8 +140,8 @@
             </div>
 
 
-     <div class="col-md-6">
-        <img :src="form.image" style="height: 40px; width: 40px;">
+     <div class="col-md-6" >
+        <img :src="form.image" style="height: 40px; width: 40px;"> 
             </div>     
             
           </div>
@@ -216,6 +217,14 @@
     axios.get('/api/supplier/')
     .then(({data}) => (this.suppliers = data)) 
   },
+
+  computed:{
+      filtersearch(){
+      return this.products.filter(product => {
+         return product.product_name.match(this.searchTerm)
+      }) 
+      }
+    },
   methods:{
     GetOldImage(){
 

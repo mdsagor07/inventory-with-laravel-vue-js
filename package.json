@@ -24,8 +24,14 @@
         "vue-template-compiler": "^2.6.14"
     },
     "dependencies": {
+        "datatables-bootstrap": "^0.0.1",
+        "datatables.net-dt": "^1.11.3",
+        "jl-datatable": "^1.1.0",
+        "jquery": "^3.6.0",
+        "laravel-vue-pagination": "^2.3.1",
         "noty": "^3.2.0-beta-deprecated",
         "sweetalert2": "^11.3.3",
+        "vue-resource": "^1.5.3",
         "vue-router": "^3.5.3"
     }
 }

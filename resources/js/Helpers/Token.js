@@ -8,6 +8,7 @@ class Token{
         return false;
 
     }
+    
     payload(token){
         const payload=token.split('.')[1]
         return this.decode(payload)

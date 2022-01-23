@@ -35,6 +35,7 @@ class SalaryController extends Controller
      
          }
 
+          
 
          public function AllSalary(){
             $salary = DB::table('salaries')->select('salary_month')->groupBy('salary_month')->get();
@@ -73,7 +74,9 @@ public function SalaryUpdate(Request $request,$id){
     $data['amount'] = $request->amount;
     $data['salary_month'] = $request->salary_month;
     
-  DB::table('salaries')->where('id',$id)->update($data);
+    DB::table('salaries')->where('id',$id)->update($data);
+
+
 }
 
 

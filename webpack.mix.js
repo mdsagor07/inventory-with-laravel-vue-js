@@ -17,5 +17,5 @@ mix.js('resources/js/app.js', 'public/js')
     
 if(!mix.inProduction()) {
     mix.sourceMaps();
-    mix.webpackConfig({ devtool: 'inline-source-map'})
+    mix.webpackConfig({ devtool: 'inline-source-map'});
  }

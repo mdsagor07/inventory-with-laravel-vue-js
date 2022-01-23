@@ -18,7 +18,10 @@
 
    <link rel="stylesheet"  href="{{ asset('css/app.css') }}">
    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
-</head>
+
+    <!-- datatable cdn css-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+  </head>
 
 <body id="page-top">
     <div id="app">
@@ -42,6 +45,11 @@
         <router-link class="nav-link" to="/home">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></router-link>
+      </li>
+      <li class="nav-item bg">
+        <router-link class="nav-link" to="/pos">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>POS</span></router-link>
       </li>
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
@@ -140,6 +148,25 @@
       </li>
 
       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap17"
+          aria-expanded="true" aria-controls="collapseBootstrap17">
+          <i class="far fa-fw fa-window-maximize"></i>
+          <span>Customer</span>
+        </a>
+        <div id="collapseBootstrap17" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+
+            <router-link class="collapse-item" to="/store-customer">Add Customer</router-link>
+           
+            <router-link class="collapse-item" to="/customer">All Customer</router-link>
+            
+          </div>
+        </div>
+
+      </li>
+
+
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap15"
           aria-expanded="true" aria-controls="collapseBootstrap15">
           <i class="far fa-fw fa-window-maximize"></i>
@@ -158,18 +185,39 @@
 {{--   nav end --}}
 
       <li class="nav-item">
+        <router-link class="nav-link " to="/stock">
+          <i class="fab fa-fw fa-wpforms"></i>
+          <span>Stock</span>
+
+        </router-link>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap16"
+            aria-expanded="true" aria-controls="collapseBootstrap16">
+            <i class="far fa-fw fa-window-maximize"></i>
+            <span>Reports</span>
+          </a>
+          <div id="collapseBootstrap16" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+  
+              <router-link class="collapse-item" to="/store-expense">Add Reports</router-link>
+             
+              <router-link class="collapse-item" to="/expense">All Reports</router-link>
+              
+            </div>
+          </div>
+        </li>
+        
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
           aria-controls="collapseForm">
           <i class="fab fa-fw fa-wpforms"></i>
           <span>Forms</span>
         </a>
-        <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Forms</h6>
-            <a class="collapse-item" href="form_basics.html">Form Basics</a>
-            <a class="collapse-item" href="form_advanceds.html">Form Advanceds</a>
-          </div>
-        </div>
+
+{{-- - --}}
+
+
+       
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
@@ -447,8 +495,14 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+<!-- datatable cdn js-->
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
 
   <script src="{{ asset('js/app.js') }}" defer></script>
+  
   <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js') }}"></script>

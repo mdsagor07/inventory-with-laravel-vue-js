@@ -5,6 +5,7 @@ let forget =require('./components/auth/forget.vue').default;
 let logout =require('./components/auth/logout.vue').default;
 
 
+
 let home =require('./components/home.vue').default;
 
 let storeemployee =require('./components/employee/create.vue').default;
@@ -40,6 +41,20 @@ let paysalary = require('./components/salary/create.vue').default;
 let allsalary = require('./components/salary/index.vue').default;
 let viewsalary = require('./components/salary/view.vue').default;
 let editsalary = require('./components/salary/edit.vue').default;
+
+//stock
+let stock =require('./components/product/stock.vue').default;
+let editstock =require('./components/product/edit-stock.vue').default;
+
+//customer
+let storecustomer =require('./components/customer/create.vue').default;
+let customer =require('./components/customer/index.vue').default;
+let editcustomer =require('./components/customer/edit.vue').default;
+
+//pos
+let pos =require('./components/pos/pointofsale.vue').default;
+
+
 
 
 
@@ -81,7 +96,19 @@ let editsalary = require('./components/salary/edit.vue').default;
 
     { path: '/salary', component: allsalary, name:'salary'},
     { path: '/view-salary/:id', component: viewsalary, name:'view-salary'},
-   { path: '/edit-salary/:id', component: editsalary, name:'edit-salary'},
+    { path: '/edit-salary/:id', component: editsalary, name:'edit-salary'},
 
 
+     //stock management 
+     
+     { path: '/stock', component: stock, name:'stock'},
+     { path: '/edit-stock/:id', component: editstock, name:'edit-stock'},
+
+    //customer
+    { path: '/store-customer', component: storecustomer,name: 'store-customer' },
+    { path: '/customer', component: customer,name: 'customer' },
+    { path: '/edit-customer/:id', component: editcustomer,name: 'edit-customer' },
+
+     //pos management  
+     { path: '/pos', component: pos, name:'pos'},
   ]

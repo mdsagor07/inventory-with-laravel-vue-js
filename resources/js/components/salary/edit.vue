@@ -27,14 +27,14 @@
           <div class="form-row">
             <div class="col-md-6">
             	<label for="exampleFormControlSelect1"><b>Name</b></label>
-         <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter Your Full Name" v-model="form.name">
+         <input readonly type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter Your Full Name" v-model="form.name">
        <small class="text-danger" v-if="errors.name"> {{ errors.name[0] }} </small>
             </div>
 
 
      <div class="col-md-6">
      	<label for="exampleFormControlSelect1"><b>Email</b></label>
-         <input type="email" class="form-control" id="exampleInputFirstName" placeholder="Enter Your Email" v-model="form.email">
+         <input readonly type="email" class="form-control" id="exampleInputFirstName" placeholder="Enter Your Email" v-model="form.email">
          <small class="text-danger" v-if="errors.email"> {{ errors.email[0] }} </small>
             </div>     
             
@@ -71,7 +71,7 @@
 
      <div class="col-md-6">
      	<label for="exampleFormControlSelect1"><b>Amount</b></label>
-         <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter Your Sallery" v-model="form.amount">
+         <input readonly type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter Your Sallery" v-model="form.amount">
          <small class="text-danger" v-if="errors.amount"> {{ errors.amount[0] }} </small>
             </div>     
             

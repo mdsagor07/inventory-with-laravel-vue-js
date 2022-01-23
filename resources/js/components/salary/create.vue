@@ -143,6 +143,7 @@
        .then(() => {
         this.$router.push({ name: 'given-salary'})
         Notification.success()
+        
        })
        .catch(error =>this.errors = error.response.data.errors)
      },
