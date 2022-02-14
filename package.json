@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "datatables-bootstrap": "^0.0.1",
+        "datatables.net-buttons": "^2.2.2",
         "datatables.net-dt": "^1.11.3",
         "jl-datatable": "^1.1.0",
         "jquery": "^3.6.0",

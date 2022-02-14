@@ -7,7 +7,7 @@
    
  </div>
 <br>
-   <input type="text" v-model="searchTerm" class="form-control" style="width: 300px;" placeholder="Search Here">
+   <!-- <input type="text" v-model="searchTerm" class="form-control" style="width: 300px;" placeholder="Search Here"> -->
 
 
 <br>
@@ -20,7 +20,7 @@
                   <h6 class="m-0 font-weight-bold text-primary">Customer List</h6>
                 </div>
                 <div class="table-responsive">
-                  <table class="table align-items-center table-flush">
+                  <table id="myTable2" class="table align-items-center table-flush">
                     <thead class="thead-light">
                       <tr>
                         <th>Name</th>
@@ -32,19 +32,8 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="customer in filtersearch" :key="customer.id">
-                        <td> {{ customer.name }} </td>
-                        <td><img :src="customer.photo" id="em_photo"></td>
-                        <td>{{ customer.phone }}</td>
-                        <td>{{ customer.email }}</td>
-                        <td>{{ customer.address }}</td>
-            <td>
-   <router-link :to="{name: 'edit-customer', params:{id:customer.id}}" class="btn btn-sm btn-primary">Edit</router-link>
-
- <a @click="deleteCustomer(customer.id)" class="btn btn-sm btn-danger"><font color="#ffffff">Delete</font></a>
-            </td>
-                      </tr>
                     
+
                     </tbody>
                   </table>
                 </div>
@@ -64,6 +53,14 @@
 
 
 <script type="text/javascript">
+
+
+import $ from 'jquery';
+
+
+
+import  'datatables.net/js/jquery.dataTables.min.js'
+import 'datatables.net-dt/js/dataTables.dataTables.min.js'
   
   export default {
     created(){
@@ -77,13 +74,7 @@
         searchTerm:''
       }
     },
-    computed:{
-      filtersearch(){
-      return this.customers.filter(customer => {
-         return customer.name.match(this.searchTerm)
-      }) 
-      }
-    },
+   
  
   methods:{
     allCustomer(){
@@ -109,7 +100,7 @@
                 })
                })
                .catch(() => {
-                this.$router.push({name: 'customer'})
+                this.$router.push({name: 'customer'}) 
                })
                 Swal.fire(
                   'Deleted!',
@@ -121,7 +112,58 @@
   } 
   },
   created(){
-    this.allCustomer();
+    // this.allCustomer();
+
+
+    $(document).ready(function() {
+    
+       $('#myTable2').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": "api/customer",
+                buttons: [
+              'copy', 'excel', 'pdf'
+                 ],
+                "columns": [
+              
+                {data: 'name', name: 'name'},   
+                
+                 { data: 'photo', name: 'photo',
+                    render: function( data, type, full, meta ) {
+                        return "<img src=\"" + data + "\" height=\"45\"/>";
+                    }
+                },   
+                {data: 'phone', name: 'phone'},
+                {data: 'email', name: 'email'},
+                
+                {data: 'address', name: 'address'},
+            
+                
+               
+                  {
+              data: 'id',name: 'action',
+              render: function(data){
+                let btn;
+                
+                         btn='<router-link :to="{name: edit-employee, params:{id:'+data+'}}" class="btn btn-sm btn-primary">Edit</router-link>';
+                         btn= btn+ '<button  id="btn"   class="edit btn btn-danger btn-sm m-2">Delete</button>';
+                        return btn;
+                        
+                        
+             },
+             
+          },
+
+          
+
+                    
+                ]
+            });
+
+
+})
+
+    
   } 
   
   } 

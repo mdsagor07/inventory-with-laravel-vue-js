@@ -23,6 +23,10 @@ import Notification from  './Helpers/Notification';
 
 window.Notification=Notification
 
+//add button globally
+import button from './button'
+window.button=button
+
 // setup sweetalaert globally
 import Swal from 'sweetalert2';
 window.Swal=Swal;
@@ -59,3 +63,5 @@ const app = new Vue({
     router
     
 });
+
+//add

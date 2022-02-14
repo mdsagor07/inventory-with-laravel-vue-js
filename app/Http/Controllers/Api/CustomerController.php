@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use DB;
 use Image;
+use Yajra\Datatables\Datatables;
+
 
 class CustomerController extends Controller
 {
@@ -17,8 +19,11 @@ class CustomerController extends Controller
      */
     public function index()
     {
-       $customer = DB::table('customers')->orderBy('id','DESC')->get();
-       return response()->json($customer);
+    //    $customer = DB::table('customers')->orderBy('id','DESC')->get();
+    //    return datatables()->of ($customer->json());
+    return datatables()->of(Customer::all())->toJson();
+
+
     }
 
     /**

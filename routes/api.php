@@ -39,7 +39,7 @@ Route::Post('/stock/update/{id}', [App\Http\Controllers\Api\ProductController::c
 
 Route::Get('/getting/product/{id}', [App\Http\Controllers\Api\PosController::class, 'GetProduct']);
 
-
+ 
 
 
 

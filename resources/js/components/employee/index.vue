@@ -46,7 +46,7 @@
                     </thead>
                     <tbody>
                     
-                      
+                     
                     </tbody>
                   </table>
                 </div>
@@ -61,10 +61,12 @@
     </div>
 </div>
 </template>
-<script>
-import jQuery from'jquery'
-import $ from'jquery'
+<script type="text/javascript" >
+ import jQuery from 'jquery';
 
+ let $ = jQuery;
+
+import  '../../button.js'
 import  'datatables.net/js/jquery.dataTables.min.js'
 import 'datatables.net-dt/js/dataTables.dataTables.min.js'
 import Vue from 'vue'
@@ -84,17 +86,29 @@ export default {
       return{
           employees:[],
           searchTerm:'',
+          data:""
       }
   },
   
   
   
   methods:{ 
+
       allEmployee(){
           axios.get('/api/employee/')
           .then(({data}) => (this.employees=data))
           .catch()
       },
+
+
+      draw() {
+            $('.btn-delete').on('click', function() {
+                alert('delete')
+            })
+        },
+
+  
+
       DeleteEmployee(id){
         alert(id);
             Swal.fire({
@@ -124,22 +138,25 @@ export default {
             }
           })
         
-      }
+      },
+      
+      
+
+      
   },
+  
   created(){
       //this.allEmployee();
-      
+     
       $(document).ready( function () {
 
-        
+    
            // $.noConflict();
             $('#myTable').DataTable({
                 "processing": true,
                 "serverSide": true,
                 "ajax": "api/employee",
-                buttons: [
-              'copy', 'excel', 'pdf'
-                 ],
+               
                 "columns": [
               
                 {data: 'name', name: 'name'},   
@@ -156,11 +173,11 @@ export default {
                   {
               data: 'id',name: 'action',
               render: function(data){
-                let btn;
+                let btn; 
+                  
                 
-                         btn='<router-link :to="{name: edit-employee, params:{id:'+data+'}}" class="btn btn-sm btn-primary">Edit</router-link>';
-                         btn= btn+ '<button  id="deletebtn"  onclick="DeleteEmployee('+data+')" class="edit btn btn-danger btn-sm m-2">Delete</button>';
-                        
+                         btn='<button id="edit-btn" data-id="'+data+'"  class="edit btn btn-info btn-sm m-2">Edit</button>';
+                         btn= btn+ '<button  id="btn-delete" data-id="'+data+'"  class="edit btn btn-danger btn-sm m-2">Delete</button>';
                         return btn;
                         
                         
@@ -175,9 +192,60 @@ export default {
             });
 
 
+                $(document).on('click','#edit-btn',function (e){
+
+
+                  let id = $(this).attr("data-id");
+                 
+                  var url = 'employee';
+                  url = url.replace('employee', 'edit-employee/'+id);
+                  window.location.href = url;
+                  Notification.success()
+
+            })
+        
+
+       $(document).on('click','#btn-delete',function (e) {
+         let id = $(this).attr("data-id");
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              axios.delete('/api/employee/'+id)
+              .then(()=> {
+                this.employees=this.employees.filter( employee =>{
+                  return employee.id !=id
+             
+                })
+              })
+              .catch(()=> {
+                
+                var url = 'employee';
+                 //$("#myTable").load(url);
+                window.location.href = url;
+                //this.$router.push({name:'employee'})
+              })  
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+          })
+      
+        
+       })
+
             
    });
 
+   
   }
  
   }
